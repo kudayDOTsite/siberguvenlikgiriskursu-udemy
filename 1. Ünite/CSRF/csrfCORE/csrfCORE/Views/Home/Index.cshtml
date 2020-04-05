@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form action="/" method="post">
+        @Html.AntiForgeryToken()
+        <input type="text" name="isim">
+        <input type="text" name="soyisim">
+        <input type="submit" value="tamam">
+    </form>
+</body>
+</html>
